@@ -1,15 +1,19 @@
 {
-  "name": "notation",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "dev": "pnpm --filter @shardsui/notation build && pnpm --filter docs dev",
+    "build": "pnpm --filter @shardsui/notation build && pnpm --filter docs build",
+    "preview": "pnpm --filter docs preview",
+    "check": "pnpm --filter @shardsui/notation typecheck && pnpm --filter docs check",
+    "typecheck": "pnpm --filter @shardsui/notation typecheck",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check .",
+    "dev:watch": "pnpm --filter @shardsui/notation build && pnpm --filter @shardsui/notation --filter docs --parallel run dev",
+    "test:package": "pnpm --filter @shardsui/notation test:package"
   },
   "devDependencies": {
-    "typescript": "~6.0.2",
-    "vite": "^8.2.0"
+    "oxfmt": "^0.62.0",
+    "typescript": "catalog:dev"
   }
 }
