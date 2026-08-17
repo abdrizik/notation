@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**.md'
+      - LICENSE
+      - '**/LICENSE'
+      - .vscode/**
+      - .claude/**
+      - docs/**
+      - .github/**
+  pull_request:
+    paths-ignore:
+      - '**.md'
+      - LICENSE
+      - '**/LICENSE'
+      - .vscode/**
+      - .claude/**
+      - docs/**
+      - .github/**
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        task: ['format:check', typecheck, build, 'test:package']
+    name: ${{ matrix.task }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 11
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm ${{ matrix.task }}
