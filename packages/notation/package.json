@@ -1,0 +1,59 @@
+{
+  "name": "@shardsui/notation",
+  "version": "0.1.0",
+  "description": "hand-drawn annotations for the web. Zero dependencies.",
+  "keywords": [
+    "annotate",
+    "annotation",
+    "annotations",
+    "doodle",
+    "hand-drawn",
+    "handwritten",
+    "highlight",
+    "marker",
+    "sketch",
+    "sketchy",
+    "svg",
+    "underline"
+  ],
+  "homepage": "https://notation.shardsui.com",
+  "bugs": "https://github.com/abdrizik/notation/issues",
+  "license": "MIT",
+  "author": "abdrizik",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdrizik/notation.git",
+    "directory": "packages/notation"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "prepack": "pnpm build",
+    "typecheck": "tsc --noEmit",
+    "test:package": "pnpm build && publint --pack pnpm"
+  },
+  "devDependencies": {
+    "publint": "^0.3.23",
+    "tsdown": "^0.22.14",
+    "typescript": "catalog:dev"
+  },
+  "browserslist": [
+    "chrome >= 113",
+    "edge >= 113",
+    "firefox >= 115",
+    "safari >= 17.4",
+    "ios_saf >= 17.4"
+  ]
+}
