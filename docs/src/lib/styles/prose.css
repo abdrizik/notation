@@ -1,0 +1,105 @@
+.prose {
+  --prose-flow: calc(var(--spacing) * 4);
+
+  font-size: var(--text-base);
+  line-height: 1.6;
+  isolation: isolate;
+  margin-trim: block-start;
+
+  :where(p) {
+    max-inline-size: 65ch;
+    margin-block-start: var(--prose-flow);
+  }
+
+  :where(h1, h2, h3) {
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--tracking-tight);
+    text-wrap: balance;
+    text-box: trim-both cap alphabetic;
+  }
+
+  :where(h1) {
+    font-size: var(--text-2xl);
+    line-height: 1.2;
+  }
+
+  :where(h2) {
+    margin-block-start: calc(var(--prose-flow) * 3);
+    font-size: var(--text-lg);
+    line-height: 1.25;
+  }
+
+  :where(h3) {
+    margin-block-start: calc(var(--prose-flow) * 2);
+    font-size: var(--text-base);
+    line-height: 1.4;
+  }
+
+  :where([id]) {
+    scroll-margin-block-start: 3lh;
+  }
+
+  :where(h1 + *, h2 + *, h3 + *) {
+    margin-block-start: var(--prose-flow);
+  }
+
+  :where(a) {
+    font-weight: var(--font-weight-medium);
+    text-decoration-line: underline;
+    text-decoration-thickness: from-font;
+    text-decoration-color: color-mix(in oklab, currentColor 30%, transparent);
+    text-decoration-skip-ink: auto;
+    text-underline-position: from-font;
+    text-underline-offset: 0.16em;
+  }
+
+  :where(strong) {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-foreground);
+  }
+
+  :where(em) {
+    font-family: var(--font-serif);
+    font-size: 1.06em;
+  }
+
+  :where(:not(pre) > code) {
+    font-family: var(--font-mono);
+    font-size: var(--text-code);
+    border-radius: var(--radius-md);
+    background-color: var(--color-code-surface);
+    color: var(--color-code);
+    padding: calc(var(--spacing) * 0.8) calc(var(--spacing) * 1.2);
+  }
+
+  :where(:is(p, li, td) code) {
+    letter-spacing: calc(var(--tracking-tight) * 0.4);
+    word-spacing: calc(var(--spacing) * -0.8);
+    line-height: normal;
+  }
+
+  :where(ul) {
+    margin-block-start: var(--prose-flow);
+    padding-inline-start: calc(var(--spacing) * 4.5);
+    list-style-type: disc;
+  }
+
+  :where(li) {
+    margin-block-start: calc(var(--spacing) * 0.5);
+    padding-inline-start: calc(var(--spacing) * 0.4);
+  }
+
+  :where(li)::marker {
+    color: var(--color-gray-500);
+  }
+
+  @media (hover: hover) {
+    :where(a:hover) {
+      text-decoration-color: currentColor;
+    }
+  }
+
+  > :where(:first-child) {
+    margin-block-start: 0;
+  }
+}
