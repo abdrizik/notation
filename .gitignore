@@ -12,6 +12,7 @@ node_modules
 # Output
 .output
 .svelte-kit
+.wrangler
 build
 dist
 

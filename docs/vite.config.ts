@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-static'
+import adapter from '@sveltejs/adapter-cloudflare'
 import { sveltekit } from '@sveltejs/kit/vite'
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 import tailwindcss from '@tailwindcss/vite'
@@ -12,7 +12,7 @@ export default defineConfig({
       compilerOptions: {
         runes: true
       },
-      adapter: adapter({ fallback: '404.html' }),
+      adapter: adapter(),
       alias: { $content: 'src/content' }
     })
   ]
