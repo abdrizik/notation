@@ -9,11 +9,28 @@
 
 <svelte:head>
   <link rel="icon" href={asset('/favicon.svg')} />
-  <title>notation — hand-drawn annotations for the web</title>
+  <link rel="canonical" href="https://notation.shardsui.com" />
+  <title>notation. hand-drawn annotations for the web</title>
   <meta
     name="description"
-    content="Hand-drawn annotations for the web. Zero dependencies, one function."
+    content="hand-drawn annotations for the web. Zero dependencies, one function."
   />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="notation" />
+  <meta property="og:title" content="notation. hand-drawn annotations for the web" />
+  <meta
+    property="og:description"
+    content="hand-drawn annotations for the web. Zero dependencies, one function."
+  />
+  <meta property="og:url" content="https://notation.shardsui.com" />
+  <meta property="og:image" content="https://notation.shardsui.com/og.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="2400" />
+  <meta property="og:image:height" content="1260" />
+  <meta property="og:image:alt" content="notation. hand-drawn annotations for the web" />
+
+  <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <a href="#main" class="skip-link">Skip to content</a>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      :root {
+        --color-ink: oklch(57.7% 0.245 27.325);
+        --color-pen-blue: oklch(0.52 0.168 255);
+        --color-pen-amber: oklch(0.56 0.152 68);
+        --color-logo: #eab308;
+        --color-gray-500: oklch(0.58 0.01 260);
+        --color-gray-950: oklch(0.2 0.004 260);
+        --font-sans: ui-sans-serif, system-ui, sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        position: relative;
+        display: flex;
+        width: 1200px;
+        height: 630px;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: #fff;
+        padding: 88px 88px 148px;
+        font-family: var(--font-sans);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .mark {
+        width: 76px;
+        height: 76px;
+        color: var(--color-logo);
+      }
+
+      .star-anchor {
+        position: absolute;
+        inset-block-start: 150px;
+        inset-inline-end: 330px;
+        inline-size: 0;
+        block-size: 74px;
+      }
+
+      h1 {
+        max-width: 16ch;
+        font-size: 84px;
+        font-weight: 600;
+        letter-spacing: -0.035em;
+        line-height: 1.35;
+        color: var(--color-gray-500);
+      }
+
+      .name {
+        color: var(--color-gray-950);
+      }
+    </style>
+  </head>
+  <body>
+    <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C12.5523 20 13 20.4477 13 21C13 21.5523 12.5523 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 15.0376 19.5376 17.5 16.5 17.5C13.4624 17.5 11 15.0376 11 12C11 11.4477 11.4477 11 12 11C12.5523 11 13 11.4477 13 12C13 13.933 14.567 15.5 16.5 15.5C18.433 15.5 20 13.933 20 12C20 7.58172 16.4183 4 12 4Z"
+        fill="currentColor"
+      />
+    </svg>
+
+    <span class="star-anchor" id="star"></span>
+
+    <h1>
+      <span class="name">notation.</span> hand-drawn <span id="squiggle">annotations</span> for the
+      <span id="arrow">web</span>
+    </h1>
+
+    <script type="module">
+      import { annotate } from '../../packages/notation/dist/index.js'
+
+      function squiggle(rect, { padding }) {
+        const y = rect.y + rect.h + padding[2]
+        const waves = Math.round(rect.w / 26)
+        const points = []
+        for (let i = 0; i <= waves * 8; i++) {
+          const t = i / (waves * 8)
+          points.push([rect.x + rect.w * t, y + Math.sin(t * waves * Math.PI * 2) * 3])
+        }
+        return [{ points }]
+      }
+
+      /** The lead line is dropped: this star floats, it isn't calling anything out. */
+      function starCallout(rect, { padding }) {
+        const [top, right] = padding
+        const r = rect.h * 0.75
+        const cx = rect.x + rect.w + right + r * 1.1
+        const cy = rect.y + rect.h / 2 - top * 0.2
+        const star = []
+        for (let i = 0; i < 5; i++) {
+          const a = ((i * 2) % 5) * ((Math.PI * 2) / 5) - Math.PI / 2
+          star.push([cx + r * Math.cos(a), cy + r * Math.sin(a)])
+        }
+        return [{ points: star, closed: true }]
+      }
+
+      /** Mirrored, so the arrow arrives from the empty space to the right. */
+      function curvedArrow(rect, { padding }) {
+        const tip = [rect.x + rect.w + padding[1], rect.y + rect.h / 2]
+        const radius = 100
+        const shaft = []
+        for (let i = 0; i <= 16; i++) {
+          const a = Math.PI * (1 + (i / 16) * 0.5)
+          shaft.push([tip[0] - radius * Math.cos(a), tip[1] + radius + radius * Math.sin(a)])
+        }
+        const flick = 24
+        return [
+          { points: shaft },
+          ...[0.6, -0.6].map((spread) => ({
+            points: [
+              tip,
+              [
+                tip[0] - flick * Math.cos(Math.PI + spread),
+                tip[1] + flick * Math.sin(Math.PI + spread)
+              ]
+            ]
+          }))
+        ]
+      }
+
+      /* Drawn one call each: a group shows its strokes in sequence, and the screenshot
+         would catch the chain half-finished. */
+      const pen = { strokeWidth: 2.5, duration: 0, seed: 7 }
+
+      annotate('#squiggle', { ...pen, type: squiggle, color: 'var(--color-ink)' }).show()
+      annotate('#star', { ...pen, type: starCallout, color: 'var(--color-pen-amber)' }).show()
+      annotate('#arrow', { ...pen, type: curvedArrow, color: 'var(--color-pen-blue)' }).show()
+    </script>
+  </body>
+</html>
