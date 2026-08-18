@@ -93,6 +93,48 @@
     color: var(--color-gray-500);
   }
 
+  :where(.table-scroll) {
+    margin-block-start: calc(var(--spacing) * 6);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+
+  :where(.table-scroll > *) {
+    margin-block-start: 0;
+  }
+
+  :where(table) {
+    inline-size: 100%;
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-gray-700);
+  }
+
+  :where(th, td) {
+    vertical-align: middle;
+    text-align: start;
+    padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+    white-space: nowrap;
+  }
+
+  :where(th) {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-foreground);
+  }
+
+  :where(tr:not(:last-child)) {
+    border-block-end: var(--border-hairline) solid var(--color-border);
+  }
+
+  :where(:is(th, td):first-child) {
+    padding-inline-start: 0;
+  }
+
+  :where(:is(th, td):last-child) {
+    padding-inline-end: 0;
+  }
+
   @media (hover: hover) {
     :where(a:hover) {
       text-decoration-color: currentColor;
