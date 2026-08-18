@@ -13,7 +13,7 @@
   <title>notation. hand-drawn annotations for the web</title>
   <meta
     name="description"
-    content="hand-drawn annotations for the web. Zero dependencies, one function."
+    content="hand-drawn annotations for the web."
   />
 
   <meta property="og:type" content="website" />
@@ -21,7 +21,7 @@
   <meta property="og:title" content="notation. hand-drawn annotations for the web" />
   <meta
     property="og:description"
-    content="hand-drawn annotations for the web. Zero dependencies, one function."
+    content="hand-drawn annotations for the web."
   />
   <meta property="og:url" content="https://notation.shardsui.com" />
   <meta property="og:image" content="https://notation.shardsui.com/og.png" />
