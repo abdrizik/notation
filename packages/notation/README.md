@@ -1,3 +1,5 @@
+![](https://notation.shardsui.com/favicon.svg)
+
 # notation
 
 hand-drawn annotations for the web. Zero dependencies.

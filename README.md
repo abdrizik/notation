@@ -1,4 +1,4 @@
-![](docs/static/favicon.svg)
+![](https://notation.shardsui.com/favicon.svg)
 
 # notation
 
