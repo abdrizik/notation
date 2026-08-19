@@ -4,7 +4,6 @@
   type Example = {
     label: string
     sample: string
-    color?: string
     config: AnnotationOptions
   }
 
@@ -16,46 +15,39 @@
     },
     {
       label: 'strokeWidth',
-      color: 'var(--color-pen-blue)',
       sample: 'this one actually matters',
-      config: { type: 'underline', strokeWidth: 5 }
+      config: { type: 'underline', color: 'var(--color-pen-blue)', strokeWidth: 5 }
     },
     {
       label: 'padding',
-      color: 'var(--color-pencil)',
       sample: 'a box with room to breathe',
-      config: { type: 'box', padding: [10, 16] }
+      config: { type: 'box', color: 'var(--color-pencil)', padding: 12 }
     },
     {
       label: 'iterations',
-      color: 'var(--color-ink)',
       sample: 'gone over again and again',
-      config: { type: 'underline', iterations: 5 }
-    },
-    {
-      label: 'rtl',
-      color: 'var(--color-pen-blue)',
-      sample: 'the pen starts from the right',
-      config: { type: 'underline', rtl: true }
+      config: { type: 'underline', color: 'var(--color-ink)', iterations: 5 }
     },
     {
       label: 'wobble',
-      color: 'var(--color-pen-amber)',
       sample: 'written in a hurry',
-      config: { type: 'underline', wobble: 2.5 }
+      config: { type: 'underline', color: 'var(--color-pen-amber)', wobble: 2.5 }
     },
     {
       label: 'duration',
-      color: 'var(--color-pen-green)',
       sample: 'drawn slowly, on purpose',
-      config: { type: 'underline', duration: 2500 }
+      config: { type: 'underline', color: 'var(--color-pen-green)', duration: 2500 }
     },
     {
       label: 'side',
-      color: 'var(--color-pencil)',
       sample:
         'Both halves of the trade-off matter: ship the smaller change now, and keep the rewrite on the roadmap for later.',
-      config: { type: 'bracket', side: ['top', 'bottom'] }
+      config: {
+        type: 'bracket',
+        color: 'var(--color-pencil)',
+        padding: { top: 12, bottom: 12, left: 6, right: 6 },
+        side: ['top', 'bottom']
+      }
     }
   ]
 </script>
@@ -84,9 +76,7 @@
         <div class="demo-stage">
           <Play>
             <div class="sample">
-              <Mark config={{ ...example.config, color: example.color ?? example.config.color }}>
-                {example.sample}
-              </Mark>
+              <Mark config={example.config}>{example.sample}</Mark>
             </div>
           </Play>
         </div>

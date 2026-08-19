@@ -6,7 +6,7 @@
 
   let { children }: Props = $props()
 
-  const config: AnnotationOptions = { type: 'circle', color: 'var(--color-ink)', padding: [4, 8] }
+  const config: AnnotationOptions = { type: 'circle', color: 'var(--color-ink)', padding: { left: 8, right: 8, top: 4, bottom: 4 } }
 
   function draw(node: HTMLElement) {
     const annotation = annotate(node, config)

@@ -1,6 +1,6 @@
 {
   "name": "@shardsui/notation",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "hand-drawn annotations for the web. Zero dependencies.",
   "keywords": [
     "annotate",

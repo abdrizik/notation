@@ -1,7 +1,7 @@
-import type { Point, Rect, ShapeOptions } from '@shardsui/notation'
+import type { Point, Rect, ShapeOptions, Spine } from '@shardsui/notation'
 
-function star(rect: Rect, { padding }: ShapeOptions): Point[][] {
-  const x = rect.x + rect.w + padding[1] * 2 + 11
+function star(rect: Rect, { padding }: ShapeOptions): Spine[] {
+  const x = rect.x + rect.w + padding.right * 2 + 11
   const y = rect.y + rect.h / 2
   const radius = 11
   const points: Point[] = []
@@ -9,7 +9,7 @@ function star(rect: Rect, { padding }: ShapeOptions): Point[][] {
     const angle = (i / 5) * Math.PI * 4 - Math.PI / 2
     points.push([x + radius * Math.cos(angle), y + radius * Math.sin(angle)])
   }
-  return [points]
+  return [{ points }]
 }
 
 export default star

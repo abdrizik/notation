@@ -1,9 +1,9 @@
-import type { Point, Rect, ShapeOptions } from '@shardsui/notation'
+import type { Point, Rect, ShapeOptions, Spine } from '@shardsui/notation'
 
-function pointersDoubleArrow(rect: Rect, { padding }: ShapeOptions): Point[][] {
-  const y = rect.y + rect.h + padding[2]
-  const left = rect.x - padding[3] * 0.4
-  const right = rect.x + rect.w + padding[1] * 0.4
+function pointersDoubleArrow(rect: Rect, { padding }: ShapeOptions): Spine[] {
+  const y = rect.y + rect.h + padding.bottom
+  const left = rect.x - padding.left * 0.4
+  const right = rect.x + rect.w + padding.right * 0.4
   const barb = Math.max(5, Math.min(10, (right - left) * 0.09))
   const shaft: Point[] = [
     [left, y],
@@ -19,7 +19,7 @@ function pointersDoubleArrow(rect: Rect, { padding }: ShapeOptions): Point[][] {
     [right, y],
     [right - barb, y + barb * 0.7]
   ]
-  return [shaft, leftHead, rightHead]
+  return [{ points: shaft }, { points: leftHead }, { points: rightHead }]
 }
 
 export default pointersDoubleArrow

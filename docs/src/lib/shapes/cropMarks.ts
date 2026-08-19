@@ -1,7 +1,7 @@
 import type { Point, Rect, ShapeOptions, Spine } from '@shardsui/notation'
 
 function cropMarks(rect: Rect, { padding }: ShapeOptions): Spine[] {
-  const [top, right, bottom, left] = padding
+  const { top, right, bottom, left } = padding
   const x1 = rect.x - left * 2
   const y1 = rect.y - top * 2
   const x2 = rect.x + rect.w + right * 2

@@ -19,7 +19,7 @@ function toLiteral(value: Literal): string {
 
 /** Renders the config that draws a demo, with the option it demonstrates highlighted. */
 function toSource(config: AnnotationOptions, highlight: string): string {
-  const fields = Object.entries(config).map(
+  const fields = (Object.entries(config) as [string, Literal][]).map(
     ([key, value]) =>
       `  ${key}: ${toLiteral(value)},${key === highlight ? ' // [!code highlight]' : ''}`
   )

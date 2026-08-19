@@ -1,7 +1,7 @@
 import type { Point, Rect, ShapeOptions, Spine } from '@shardsui/notation'
 
 function speechBubble(rect: Rect, { padding }: ShapeOptions): Spine[] {
-  const [top, right, bottom, left] = padding
+  const { top, right, bottom, left } = padding
   const x = rect.x - left * 2
   const y = rect.y - top * 2
   const w = rect.w + (left + right) * 2

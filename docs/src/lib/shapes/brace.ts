@@ -1,9 +1,9 @@
-import type { Point, Rect, ShapeOptions } from '@shardsui/notation'
+import type { Point, Rect, ShapeOptions, Spine } from '@shardsui/notation'
 
-function brace(rect: Rect, { padding }: ShapeOptions): Point[][] {
-  const x = rect.x - padding[3] * 2
-  const top = rect.y - padding[0]
-  const bottom = rect.y + rect.h + padding[2]
+function brace(rect: Rect, { padding }: ShapeOptions): Spine[] {
+  const x = rect.x - padding.left * 2
+  const top = rect.y - padding.top
+  const bottom = rect.y + rect.h + padding.bottom
   const mid = (top + bottom) / 2
   const arm = 9
   const hook: Point[] = [
@@ -15,7 +15,7 @@ function brace(rect: Rect, { padding }: ShapeOptions): Point[][] {
     [x + arm * 0.3, bottom - arm],
     [x + arm, bottom]
   ]
-  return [hook]
+  return [{ points: hook }]
 }
 
 export default brace

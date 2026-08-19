@@ -2,7 +2,7 @@ import type { Point, Rect, ShapeOptions, Spine } from '@shardsui/notation'
 
 function calloutsLetterBadge(rect: Rect, { padding }: ShapeOptions): Spine[] {
   const radius = 13
-  const cx = rect.x - padding[3] - radius - 4
+  const cx = rect.x - padding.left - radius - 4
   const cy = rect.y + rect.h / 2
   const hex: Point[] = []
   for (let i = 0; i < 6; i++) {
