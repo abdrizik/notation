@@ -1,7 +1,7 @@
 import type { Rect, ShapeOptions, Spine } from '@shardsui/notation'
 
 function checkmark(rect: Rect, { padding }: ShapeOptions): Spine[] {
-  const x = rect.x - padding[3] * 2
+  const x = rect.x - padding.left * 2
   const y = rect.y + rect.h / 2
   const arm = Math.min(13, rect.h)
   return [

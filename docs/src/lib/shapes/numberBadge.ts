@@ -1,7 +1,7 @@
 import type { Point, Rect, ShapeOptions, Spine } from '@shardsui/notation'
 
 function numberBadge(rect: Rect, { padding }: ShapeOptions): Spine[] {
-  const x = rect.x - padding[3] * 2 - 13
+  const x = rect.x - padding.left * 2 - 13
   const y = rect.y + rect.h / 2
   const radius = 12
   const ring: Point[] = []

@@ -21,7 +21,7 @@
     {
       label: 'circle',
       sample: 'meet at the north entrance',
-      config: { type: 'circle', padding: [6, 10], color: 'var(--color-ink)' }
+      config: { type: 'circle', padding: { left: 10, right: 10, top: 6, bottom: 6 }, color: 'var(--color-ink)' }
     },
     {
       label: 'highlight',
@@ -42,7 +42,12 @@
       label: 'bracket',
       sample:
         'Everything above ships in the first release. The rest lands in a follow-up, once the migration is done and the old endpoints are retired.',
-      config: { type: 'bracket', side: ['left', 'right'], color: 'var(--color-pen-blue)' }
+      config: {
+        type: 'bracket',
+        side: ['left', 'right'],
+        padding: { left: 14, right: 14, top: 12, bottom: 12 },
+        color: 'var(--color-pen-blue)'
+      }
     },
     {
       label: 'arrow',

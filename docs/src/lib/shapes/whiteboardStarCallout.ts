@@ -1,7 +1,7 @@
 import type { Point, Rect, ShapeOptions, Spine } from '@shardsui/notation'
 
 function whiteboardStarCallout(rect: Rect, { padding }: ShapeOptions): Spine[] {
-  const [top, right] = padding
+  const { top, right } = padding
   const r = Math.max(9, Math.min(22, rect.h * 0.75))
   const cx = rect.x + rect.w + right + r * 1.1
   const cy = rect.y + rect.h / 2 - top * 0.2

@@ -26,7 +26,7 @@
   const marks: MarkEntry[] = []
   let revealed = $state(false)
   let shown = $state(false)
-  let group: Annotation | undefined
+  let handle: Annotation | undefined
 
   setContext<PlayContext>(playKey, {
     register(entry) {
@@ -40,16 +40,17 @@
 
   $effect(() => {
     if (!revealed || marks.length === 0) return
-    const entries = [...marks]
-      .sort((a, b) => a.order - b.order)
-      .map((mark): [HTMLElement, AnnotationOptions] => [mark.element, mark.config])
-    const annotation = annotate(entries)
+    const annotation = annotate(
+      [...marks]
+        .sort((a, b) => a.order - b.order)
+        .map((mark): [HTMLElement, AnnotationOptions] => [mark.element, mark.config])
+    )
     annotation.show()
-    group = annotation
+    handle = annotation
     shown = true
     return () => {
       annotation.remove()
-      group = undefined
+      handle = undefined
       shown = false
     }
   })
@@ -70,12 +71,12 @@
   }
 
   function toggle() {
-    if (!group) {
+    if (!handle) {
       revealed = true
       return
     }
-    if (shown) group.hide()
-    else group.show()
+    if (shown) handle.hide()
+    else handle.show()
     shown = !shown
   }
 </script>

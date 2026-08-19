@@ -1,7 +1,7 @@
 import type { Point, Rect, ShapeOptions, Spine } from '@shardsui/notation'
 
 function framesTornEdge(rect: Rect, { padding }: ShapeOptions): Spine[] {
-  const [top, right, bottom, left] = padding
+  const { top, right, bottom, left } = padding
   const x1 = rect.x - left
   const y1 = rect.y - top
   const x2 = rect.x + rect.w + right
