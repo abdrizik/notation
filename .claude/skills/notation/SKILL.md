@@ -1,6 +1,7 @@
 ---
 name: notation
-description: Hand-drawn annotations for the web with `@shardsui/notation` — underlines, boxes, circles, highlights, strike-throughs, cross-offs, brackets and arrows, or a shape you write yourself, drawn as animated SVG strokes. Use when adding annotations to a page, choosing which annotation type fits, tuning wobble/iterations/duration/seed, sequencing several marks, writing a custom Shape, or when a mark lands in the wrong place or covers the text. Triggers on: notation, annotate(), rough-notation, hand-drawn underline, sketchy circle, marker swipe, highlight a phrase, circle a word, cross something off, annotate a heading.
+description: >-
+  Hand-drawn annotations for the web with `@shardsui/notation` — underlines, boxes, circles, highlights, strike-throughs, cross-offs, brackets and arrows, or a shape you write yourself, drawn as animated SVG strokes. Use when adding annotations to a page, choosing which annotation type fits, tuning wobble/iterations/duration/seed, sequencing several marks, writing a custom Shape, or when a mark lands in the wrong place or covers the text. Triggers on: notation, annotate(), rough-notation, hand-drawn underline, sketchy circle, marker swipe, highlight a phrase, circle a word, cross something off, annotate a heading.
 ---
 
 # notation
