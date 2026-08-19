@@ -167,7 +167,7 @@ a.show()
 The recipe is the same everywhere: draw when the element mounts, `remove()` when it
 unmounts.
 
-::tabs{labels="React,Vue,Svelte"}
+::tabs{labels="React,Vue,Svelte,Angular"}
 :::tab{label="React"}
 
 ```tsx
@@ -226,6 +226,30 @@ watchEffect((onCleanup) => {
 </script>
 
 <h1 {@attach underline}>Hand-drawn annotations</h1>
+```
+
+:::
+:::tab{label="Angular"}
+
+```ts
+import { Component, ElementRef, DestroyRef, afterNextRender, viewChild } from '@angular/core'
+import { annotate } from '@shardsui/notation' // [!code highlight]
+
+@Component({
+  selector: 'app-title',
+  template: `<h1 #title>Hand-drawn annotations</h1>`
+})
+export class Title {
+  private title = viewChild.required<ElementRef<HTMLElement>>('title')
+
+  constructor(destroyRef: DestroyRef) {
+    afterNextRender(() => {
+      const a = annotate(this.title().nativeElement, { type: 'underline' }) // [!code highlight:3]
+      a.show()
+      destroyRef.onDestroy(() => a.remove())
+    })
+  }
+}
 ```
 
 :::
